@@ -5,38 +5,68 @@
  */
 package movieexporter;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Casey
  */
 class Txtouter extends DataWriter {
-
-    @Override
-    void outFile(HashMap<String, String> movieDetails) {
-        try{
-            FileWriter writer = new FileWriter("Movie Aggregator.txt", true);
-            
-            Iterator<String> keyIter = movieDetails.keySet().iterator();
-            
-            String key;
-            
-            while(keyIter.hasNext()){
-                key= keyIter.next();
-                writer.write(key+movieDetails.get(key));
-            }
-            
-            writer.close();
+    private FileWriter createTxt(String fileName){
+        File f = new File(fileName);
+        if(f.exists()){
+            f.delete();
         }
-        catch(IOException ex){
-            System.out.println("Unexpected error occured : "+ex);
+        try {
+            FileWriter writer = new FileWriter(f,false);
+            return writer;
+        } catch (IOException ex) {
+            System.out.println("Unexpected error occured : " + ex);
         }
-        
-        
+        return null;
     }
     
+    private void addDetails(HashMap<String,String> movieDetails, FileWriter writer){
+        Iterator<String> keyIter = movieDetails.keySet().iterator();
+        String key;
+        
+        try{
+            writer.write("Movie Details");
+            writer.append(System.lineSeparator());
+            
+            while(keyIter.hasNext()){
+                    key= keyIter.next();
+                    writer.append(System.lineSeparator());
+                    writer.write(key+movieDetails.get(key));
+            }
+            writer.close();
+        }catch(IOException ex){
+            System.out.println("Unexpected error occured : "+ex);
+        }     
+    }
+    
+    
+    @Override
+    void outFile(HashMap<String, String> movieDetails) {
+        Scanner in=new Scanner(System.in);
+        System.out.println("Enter output filename : ");
+        String fileName = in.nextLine();
+        
+        if(fileName.isEmpty()){
+            fileName = "Movie Aggregator";
+        }
+        
+        FileWriter writer=createTxt(fileName);
+        
+        if(writer!=null){
+            addDetails(movieDetails,writer);
+        }
+    }
 }

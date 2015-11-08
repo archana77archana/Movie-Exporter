@@ -1,0 +1,3 @@
+Type Output methods as: 
+1. movieexporter.Pdfouter - for PDF
+2. movieexporter.Txtouter - for TXT file

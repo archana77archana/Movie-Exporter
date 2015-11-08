@@ -12,17 +12,16 @@ import java.util.Scanner;
  *
  * @author Casey
  */
-public class DefaultInput extends DataInput {
-    @Override
-    HashMap input(HashMap<String, String> movieDetails) {
-        
+class DefaultInput extends DataInput {
+    
+    private HashMap getInput(HashMap<String, String> movieDetails){
         Scanner in = new Scanner(System.in);
         
         System.out.println("Enter Movie name: ");
         movieDetails. put("Name : ",in.nextLine());
         
         System.out.println("Enter language: ");
-        movieDetails. put("Lang : ", in.nextLine());
+        movieDetails. put("Language : ", in.nextLine());
         
         System.out.println("Enter actor: ");
         movieDetails. put("Actor : ", in.nextLine());
@@ -32,7 +31,12 @@ public class DefaultInput extends DataInput {
         
         System.out.println("Enter runtime: ");
         movieDetails. put("Runtime : ", in.nextLine());
-        
         return movieDetails;
+    }
+    
+    
+    @Override
+    HashMap input(HashMap<String, String> movieDetails) {
+        return getInput(movieDetails);
     }
 }
