@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author Casey
  */
 class DefaultInput extends DataInput {
-    private HashMap<String,String> movieDetails=null;
+    private HashMap<String,String> movieDetails = null;
     
     
     void printDetails(){
