@@ -43,7 +43,7 @@ class DefaultInput extends DataInput {
     
     @Override
     HashMap input(HashMap<String, String> movieDetailsArg) {
-        movieDetails=movieDetailsArg;
+        movieDetails = movieDetailsArg;
         return getInput();
     }
 }
