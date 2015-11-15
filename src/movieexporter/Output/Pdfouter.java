@@ -22,7 +22,16 @@ import java.util.Scanner;
  */
 class Pdfouter extends DataWriter {
     
-    private Document createPdf(String fileName){
+    private HashMap<String,String> movieDetails = null;
+    private String fileName = null;
+    
+    
+    void printDetails(){
+        System.out.println(" Output details in PDF format");
+    }
+    
+    
+    private Document createPdf(){
         Document doc;
         doc = new Document();
         try{
@@ -34,7 +43,7 @@ class Pdfouter extends DataWriter {
         return null;
     } 
     
-    private void addDetails(HashMap<String, String> movieDetails,Document doc) {
+    private void addDetails(Document doc) {
         
         Iterator<String> keyIter = movieDetails.keySet().iterator();
         
@@ -49,7 +58,7 @@ class Pdfouter extends DataWriter {
             doc.add(Chunk.NEWLINE);
             
             while(keyIter.hasNext()){
-                key= keyIter.next();
+                key = keyIter.next();
                 doc.add(new Paragraph(key+movieDetails.get(key)));
             }
             
@@ -61,16 +70,17 @@ class Pdfouter extends DataWriter {
     }
 
     @Override
-    void outFile(HashMap<String, String> movieDetails){
+    void outFile(HashMap<String, String> movieDetailsArg){
+        movieDetails=movieDetailsArg;
         Scanner in = new Scanner(System.in);
         System.out.println("Enter output filename : ");
-        String fileName = in.nextLine();
+        fileName = in.nextLine();
         if(fileName.isEmpty()){
             fileName  = "Movie Aggregator";
         }
-        Document doc=createPdf(fileName);
+        Document doc=createPdf();
         if(doc != null){
-            addDetails(movieDetails, doc);
+            addDetails(doc);
         }
     }
 }

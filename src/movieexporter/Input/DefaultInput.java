@@ -13,8 +13,14 @@ import java.util.Scanner;
  * @author Casey
  */
 class DefaultInput extends DataInput {
+    private HashMap<String,String> movieDetails=null;
     
-    private HashMap getInput(HashMap<String, String> movieDetails){
+    
+    void printDetails(){
+        System.out.println("Input all the details of the movie");
+    }
+    
+    private HashMap getInput(){
         Scanner in = new Scanner(System.in);
         
         System.out.println("Enter Movie name: ");
@@ -36,7 +42,8 @@ class DefaultInput extends DataInput {
     
     
     @Override
-    HashMap input(HashMap<String, String> movieDetails) {
-        return getInput(movieDetails);
+    HashMap input(HashMap<String, String> movieDetailsArg) {
+        movieDetails=movieDetailsArg;
+        return getInput();
     }
 }

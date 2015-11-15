@@ -19,7 +19,16 @@ import java.util.logging.Logger;
  * @author Casey
  */
 class Txtouter extends DataWriter {
-    private FileWriter createTxt(String fileName){
+    
+    private HashMap<String,String> movieDetails=null;
+    private String fileName=null;
+    
+    
+    void printDetails(){
+        System.out.println(" Output details in Text format");
+    }
+    
+    private FileWriter createTxt(){
         File f = new File(fileName);
         if(f.exists()){
             f.delete();
@@ -33,7 +42,7 @@ class Txtouter extends DataWriter {
         return null;
     }
     
-    private void addDetails(HashMap<String,String> movieDetails, FileWriter writer){
+    private void addDetails(FileWriter writer){
         Iterator<String> keyIter = movieDetails.keySet().iterator();
         String key;
         
@@ -54,19 +63,19 @@ class Txtouter extends DataWriter {
     
     
     @Override
-    void outFile(HashMap<String, String> movieDetails) {
-        Scanner in=new Scanner(System.in);
+    void outFile(HashMap<String, String> movieDetailsArg) {
+        movieDetails = movieDetailsArg;
+        Scanner in = new Scanner(System.in);
         System.out.println("Enter output filename : ");
-        String fileName = in.nextLine();
+        fileName = in.nextLine();
         
         if(fileName.isEmpty()){
             fileName = "Movie Aggregator";
         }
         
-        FileWriter writer=createTxt(fileName);
-        
-        if(writer!=null){
-            addDetails(movieDetails,writer);
+        FileWriter writer = createTxt();
+        if(writer != null){
+            addDetails(writer);
         }
     }
 }
