@@ -20,8 +20,8 @@ import java.util.logging.Logger;
  */
 class Txtouter extends DataWriter {
     
-    private HashMap<String,String> movieDetails=null;
-    private String fileName=null;
+    private HashMap<String,String> movieDetails = null;
+    private String fileName = null;
     
     
     void printDetails(){
