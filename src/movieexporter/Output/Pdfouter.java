@@ -71,14 +71,14 @@ class Pdfouter extends DataWriter {
 
     @Override
     void outFile(HashMap<String, String> movieDetailsArg){
-        movieDetails=movieDetailsArg;
+        movieDetails = movieDetailsArg;
         Scanner in = new Scanner(System.in);
         System.out.println("Enter output filename : ");
         fileName = in.nextLine();
         if(fileName.isEmpty()){
             fileName  = "Movie Aggregator";
         }
-        Document doc=createPdf();
+        Document doc = createPdf();
         if(doc != null){
             addDetails(doc);
         }
