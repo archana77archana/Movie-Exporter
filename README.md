@@ -1,3 +1,9 @@
+# MOVIE AGGREGATOR
+***
+
+
+A console based application that accepts movie details like Name, Run Time, Language, Lead Actor and Genre and exports these details into  any format that the user asks for.
+
 ### [ Features]
 
 * Reflection based plugin architecture
@@ -86,4 +92,3 @@ Then run it using
 * Removing the usage of txt files to store plugin information. 
 * Adding more user control throughout the program execution.
 * Adding more user level functionality
-
