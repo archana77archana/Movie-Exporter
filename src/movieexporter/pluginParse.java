@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Lost_Soul
+ * @author Casey
  */
 public class pluginParse {
     
