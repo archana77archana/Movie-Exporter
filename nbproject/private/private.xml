@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Programs/Multunus/Movie%20Exporter/src/movieexporter/MovieExporter.java</file>
-            <file>file:/E:/Programs/Multunus/Movie%20Exporter/src/movieexporter/pluginGetter.java</file>
             <file>file:/E:/Programs/Multunus/Movie%20Exporter/src/movieexporter/pluginParse.java</file>
             <file>file:/E:/Programs/Multunus/Movie%20Exporter/src/movieexporter/Output/Pdfouter.java</file>
+            <file>file:/E:/Programs/Multunus/Movie%20Exporter/src/movieexporter/pluginGetter.java</file>
             <file>file:/E:/Programs/Multunus/Movie%20Exporter/src/movieexporter/Output/Txtouter.java</file>
-            <file>file:/E:/Programs/Multunus/Movie%20Exporter/src/movieexporter/Input/DefaultInput.java</file>
+            <file>file:/E:/Programs/Multunus/Movie%20Exporter/src/movieexporter/MovieExporter.java</file>
         </group>
     </open-files>
 </project-private>

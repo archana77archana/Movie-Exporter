@@ -16,8 +16,8 @@ import java.util.Vector;
  *
  */
  
-abstract class DataWriter{
-    abstract void outFile(HashMap<String, String> movieDetails);
+abstract class DataOutput{
+    abstract void outFile(HashMap<String, String> movieDetails, String fileName);
     abstract void printDetails();
 }
  
@@ -27,7 +27,7 @@ abstract class DataInput{
 }
  
 class MovieInput{
-    private HashMap<String,String> movieDetails = null;
+    private HashMap<String, String> movieDetails = null;
     private Scanner in = null;
     Vector<Object> objList = null;
    
@@ -64,7 +64,7 @@ class MovieInput{
             System.out.println("Unexpected error occured" + ex);
         }
         */
-        System.out.println("Enter the number corresponding to the method wanted");
+        System.out.println("Enter the number corresponding to the method wanted: ");
         int choice = in.nextInt();
         input((DataInput)objList.elementAt(choice));
     }
@@ -72,6 +72,7 @@ class MovieInput{
     void getInput(Scanner inArg, HashMap<String,String>movieDetailsArg){
         in = inArg;
         movieDetails = movieDetailsArg;
+        
         printDetails();
         invokeInputMethod();
     }
@@ -83,7 +84,7 @@ class MovieOutput{
     private HashMap<String,String> movieDetails=null;
     private Scanner in=null;
    
-    private void output(DataWriter outputMethod){
+    private void output(DataOutput outputMethod){
         outputMethod.outFile(movieDetails);
     }
     private void invokeOutputMethord(){
@@ -92,13 +93,13 @@ class MovieOutput{
        
         try {
             test = Class.forName(in.nextLine()).newInstance();
-            output((DataWriter)test);
+            output((DataOutput)test);
         } catch (ClassNotFoundException|InstantiationException|IllegalAccessException ex) {
             System.out.println("Unexpected error occured" + ex);
         }
     }
    
-    void getOutput(Scanner inArg,HashMap<String, String>movieDetailsArg){
+    void produceOutput(Scanner inArg,HashMap<String, String>movieDetailsArg){
         in=inArg;
         movieDetails=movieDetailsArg;
         invokeOutputMethord();
@@ -108,15 +109,16 @@ class MovieOutput{
 */
  
 class MovieOutput{
-    private HashMap<String,String> movieDetails = null;
+    private HashMap<String, String> movieDetails = null;
     private Scanner in = null;
     Vector<Object> objList = null;
+    String fileName = null;
    
-    private void output(DataWriter outputMethod){
-        outputMethod.outFile(movieDetails);
+    private void output(DataOutput outputMethod){
+        outputMethod.outFile(movieDetails, fileName);
     }
    
-    private void printDetails(DataWriter outputMethod){
+    private void printDetails(DataOutput outputMethod){
         outputMethod.printDetails();
     }
    
@@ -127,20 +129,31 @@ class MovieOutput{
         int i = 0;
         while(iter.hasNext()){
             System.out.println(" Choice ("+i+")");
-            printDetails((DataWriter)iter.next());
+            printDetails((DataOutput)iter.next());
             i = i+1;
         }
     }
    
+    private void getFileName(){
+        in.nextLine();
+        System.out.println("Enter fileName: ");
+        fileName = in.nextLine();
+        if(fileName.isEmpty()){
+            fileName  = "Movie Aggregator";
+        }
+    }
+    
+    
     private void invokeOutput(){
         System.out.println("Enter the number corresponding to the method wanted");
         int choice = in.nextInt();
-        output((DataWriter)objList.elementAt(choice));
+        output((DataOutput)objList.elementAt(choice));
     }
    
-    void getOutput(Scanner inArg,HashMap<String,String> movieDetailsArg){
+    void produceOutput(Scanner inArg,HashMap<String,String> movieDetailsArg){
         in = inArg;
         movieDetails = movieDetailsArg;
+        getFileName();
         printDetails();
         invokeOutput();
     }
@@ -175,7 +188,7 @@ public class MovieExporter {
             //obj3.methodIn();
                
              MovieOutput obj2 = new MovieOutput();
-             obj2.getOutput(in, movieDetails);
+             obj2.produceOutput(in, movieDetails);
         }
         catch(Exception ex){
             System.out.println("Unexpected error occured" + ex);

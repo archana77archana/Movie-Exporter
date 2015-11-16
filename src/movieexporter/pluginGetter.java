@@ -30,6 +30,7 @@ public class pluginGetter {
                 }
             }
     }
+    
     Vector<String> getPlugins(String directoryNameArg){
         directoryName = directoryNameArg;
         getFileList();

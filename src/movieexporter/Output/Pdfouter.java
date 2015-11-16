@@ -20,7 +20,7 @@ import java.util.Scanner;
  *
  * @author Casey
  */
-class Pdfouter extends DataWriter {
+class Pdfouter extends DataOutput {
     
     private HashMap<String,String> movieDetails = null;
     private String fileName = null;
@@ -70,15 +70,10 @@ class Pdfouter extends DataWriter {
     }
 
     @Override
-    void outFile(HashMap<String, String> movieDetailsArg){
-        movieDetails=movieDetailsArg;
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter output filename : ");
-        fileName = in.nextLine();
-        if(fileName.isEmpty()){
-            fileName  = "Movie Aggregator";
-        }
-        Document doc=createPdf();
+    void outFile(HashMap<String, String> movieDetailsArg, String fileNameArg){
+        movieDetails = movieDetailsArg;
+        fileName = fileNameArg;
+        Document doc = createPdf();
         if(doc != null){
             addDetails(doc);
         }

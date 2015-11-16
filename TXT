@@ -1,0 +1,7 @@
+Movie Details
+
+Name : Real Steel
+Genre : Action
+Runtime : 2
+Actor : Hugh Jackman
+Language : English

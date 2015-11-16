@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author Casey
  */
 class DefaultInput extends DataInput {
-    private HashMap<String,String> movieDetails=null;
+    private HashMap<String,String> movieDetails = null;
     
     
     void printDetails(){
@@ -43,7 +43,7 @@ class DefaultInput extends DataInput {
     
     @Override
     HashMap input(HashMap<String, String> movieDetailsArg) {
-        movieDetails=movieDetailsArg;
+        movieDetails = movieDetailsArg;
         return getInput();
     }
 }

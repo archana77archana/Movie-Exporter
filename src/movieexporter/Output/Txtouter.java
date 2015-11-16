@@ -18,10 +18,10 @@ import java.util.logging.Logger;
  *
  * @author Casey
  */
-class Txtouter extends DataWriter {
+class Txtouter extends DataOutput {
     
-    private HashMap<String,String> movieDetails=null;
-    private String fileName=null;
+    private HashMap<String,String> movieDetails = null;
+    private String fileName = null;
     
     
     void printDetails(){
@@ -63,15 +63,9 @@ class Txtouter extends DataWriter {
     
     
     @Override
-    void outFile(HashMap<String, String> movieDetailsArg) {
+    void outFile(HashMap<String, String> movieDetailsArg, String fileNameArg) {
         movieDetails = movieDetailsArg;
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter output filename : ");
-        fileName = in.nextLine();
-        
-        if(fileName.isEmpty()){
-            fileName = "Movie Aggregator";
-        }
+        fileName = fileNameArg;
         
         FileWriter writer = createTxt();
         if(writer != null){
