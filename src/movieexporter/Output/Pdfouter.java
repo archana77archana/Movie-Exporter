@@ -22,7 +22,7 @@ import java.util.Scanner;
  */
 class Pdfouter extends DataOutput {
     
-    private HashMap<String,String> movieDetails = null;
+    private HashMap<String, String> movieDetails = null;
     private String fileName = null;
     
     
@@ -70,7 +70,7 @@ class Pdfouter extends DataOutput {
     }
 
     @Override
-    void outFile(HashMap<String, String> movieDetailsArg, String fileNameArg){
+    void outFile(HashMap<String, String> movieDetailsArg,String fileNameArg){
         movieDetails = movieDetailsArg;
         fileName = fileNameArg;
         Document doc = createPdf();
